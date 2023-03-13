@@ -1,32 +1,31 @@
-#include <iostream>
-#include <cstring>
+#include <fstream>
+
+#define lli long long int
+#define MOD 1999999973
 
 using namespace std;
 
-void computeLPS(char txt[], int length, int lps[]) {
-    int i = 1, j = 0;
-    lps[j] = j;
+ifstream cin("lgput.in");
+ofstream cout("lgput.out");
 
-    while (i < length) {
-        if (txt[i] == txt[j])
-            lps[i++] = ++j;
-        else {
-            if (j != 0)
-                j = lps[j - 1];
-            else
-                lps[i++] = 0;
-        }
+lli fastPower(lli base, lli power) {
+    lli powerValue = 1;
+
+    while (power) {
+        if (power % 2 == 1)
+            powerValue = (powerValue * base) % MOD;
+`
+        base = (base * base) % MOD;
+        power /= 2;
     }
+
+    return powerValue;
 }
 
 int main() {
-    char txt[] = "ABABABABCABABDABACDABABCABAB";
-    int length = strlen(txt);
+    lli base, power;
 
-    int lps[1000];
+    cin >> base >> power;
 
-    computeLPS(txt, length, lps);
-
-    for (int i = 0; i < length; i++)
-        cout << lps[i] << " ";
+    cout << fastPower(base, power);
 }
