@@ -1,9 +1,6 @@
-#include <fstream>
+#include <iostream>
 
 using namespace std;
-
-ifstream cin("rucsac.in");
-ofstream cout("rucsac.out");
 
 pair<int, int> objects[5002];
 
